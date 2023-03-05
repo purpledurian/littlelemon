@@ -17,7 +17,7 @@ struct Menu: View {
             }
         }
         .padding()
-        .background(Color.green)
+        .background(Color.yellow)
     }
 }
 
