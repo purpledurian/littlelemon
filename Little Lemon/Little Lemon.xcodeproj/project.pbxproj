@@ -8,17 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		3DE1BB4329B151C6004D4D84 /* Little_LemonApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE1BB4229B151C6004D4D84 /* Little_LemonApp.swift */; };
-		3DE1BB4529B151C6004D4D84 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE1BB4429B151C6004D4D84 /* ContentView.swift */; };
 		3DE1BB4729B151C7004D4D84 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DE1BB4629B151C7004D4D84 /* Assets.xcassets */; };
 		3DE1BB4A29B151C7004D4D84 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DE1BB4929B151C7004D4D84 /* Preview Assets.xcassets */; };
+		3DED2E4629B525C100EA0E81 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DED2E4529B525C100EA0E81 /* Menu.swift */; };
+		3DED2E4829B5292000EA0E81 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DED2E4729B5292000EA0E81 /* Home.swift */; };
+		3DED2E4A29B5295500EA0E81 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DED2E4929B5295500EA0E81 /* Onboarding.swift */; };
+		3DED2E4C29B5296400EA0E81 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DED2E4B29B5296400EA0E81 /* UserProfile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3DE1BB3F29B151C6004D4D84 /* Little Lemon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Little Lemon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DE1BB4229B151C6004D4D84 /* Little_LemonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Little_LemonApp.swift; sourceTree = "<group>"; };
-		3DE1BB4429B151C6004D4D84 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3DE1BB4629B151C7004D4D84 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3DE1BB4929B151C7004D4D84 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		3DED2E4529B525C100EA0E81 /* Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		3DED2E4729B5292000EA0E81 /* Home.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		3DED2E4929B5295500EA0E81 /* Onboarding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Onboarding.swift; path = "Little Lemon/Onboarding.swift"; sourceTree = SOURCE_ROOT; };
+		3DED2E4B29B5296400EA0E81 /* UserProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserProfile.swift; path = "Little Lemon/UserProfile.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,7 +58,10 @@
 			isa = PBXGroup;
 			children = (
 				3DE1BB4229B151C6004D4D84 /* Little_LemonApp.swift */,
-				3DE1BB4429B151C6004D4D84 /* ContentView.swift */,
+				3DED2E4729B5292000EA0E81 /* Home.swift */,
+				3DED2E4529B525C100EA0E81 /* Menu.swift */,
+				3DED2E4B29B5296400EA0E81 /* UserProfile.swift */,
+				3DED2E4929B5295500EA0E81 /* Onboarding.swift */,
 				3DE1BB4629B151C7004D4D84 /* Assets.xcassets */,
 				3DE1BB4829B151C7004D4D84 /* Preview Content */,
 			);
@@ -137,7 +146,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3DE1BB4529B151C6004D4D84 /* ContentView.swift in Sources */,
+				3DED2E4629B525C100EA0E81 /* Menu.swift in Sources */,
+				3DED2E4829B5292000EA0E81 /* Home.swift in Sources */,
+				3DED2E4C29B5296400EA0E81 /* UserProfile.swift in Sources */,
+				3DED2E4A29B5295500EA0E81 /* Onboarding.swift in Sources */,
 				3DE1BB4329B151C6004D4D84 /* Little_LemonApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
