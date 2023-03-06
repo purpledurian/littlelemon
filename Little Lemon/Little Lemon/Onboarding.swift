@@ -98,7 +98,7 @@ struct Onboarding: View {
                 
                 
             } // VStack
-            .background(Color.yellow)
+            .background(Color.green)
             
         } // NavigationView
         .padding()
