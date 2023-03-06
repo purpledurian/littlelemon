@@ -33,24 +33,24 @@ struct Onboarding: View {
                         EmptyView()
                 }
                 
-                //HStack {
+               
                     Text("First name *")
                         .font(.subheadline)
                     
                     TextField("First Name",
                               text: $firstName)
-                //}
+               
                 
-                //HStack {
+               
                     Text("Last name *")
                         .font(.subheadline)
                     
                     TextField("Last Name",
                               text: $lastName
                     )
-                //}
+              
                 
-                //HStack {
+                
                     Text("Email *")
                         .font(.subheadline)
                     
@@ -61,15 +61,11 @@ struct Onboarding: View {
                     .textContentType(.emailAddress)
                     .disableAutocorrection(true)
                     .autocapitalization(.none)
-                //}
+              
                 
                 Button(action: {
                     
-                    /*
-                     
-                     presentationMode.wrappedValue.dismiss()
-                     }
-                     */
+                    
                     if (firstName.isEmpty || lastName.isEmpty || email.isEmpty) {
                         showErrorMessage = true
                     }
