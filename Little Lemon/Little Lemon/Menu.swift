@@ -12,9 +12,8 @@ struct Menu: View {
             Text("Little Lemon")
             Text("Chicago")
             Text("We are a family restaurant")
-            List {
-                
-            }
+            OurDishes()
+ 
         }
         .padding()
         .background(Color.yellow)
