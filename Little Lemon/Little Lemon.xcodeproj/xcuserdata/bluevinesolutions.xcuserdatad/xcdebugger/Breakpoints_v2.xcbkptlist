@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "359326DB-D2CB-464A-B204-98A93F155B84"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F7511002-14C1-454A-AE47-3091F3773940"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Little Lemon/Onboarding.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "F7511002-14C1-454A-AE47-3091F3773940 - 73e8f690c85e6601"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Little_Lemon.Onboarding.body.getter : some"
+                  moduleName = "Little Lemon"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bluevinesolutions/dev/capstone/littleLemon/littlelemon/Little%20Lemon/Little%20Lemon/Onboarding.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "148"
+                  endingLineNumber = "148"
+                  offsetFromSymbolStart = "856">
+               </Location>
+               <Location
+                  uuid = "F7511002-14C1-454A-AE47-3091F3773940 - 33aa4ee88eadc7da"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #3 () -&gt; () in Little_Lemon.Onboarding.body.getter : some"
+                  moduleName = "Little Lemon"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bluevinesolutions/dev/capstone/littleLemon/littlelemon/Little%20Lemon/Little%20Lemon/Onboarding.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "149"
+                  endingLineNumber = "149"
+                  offsetFromSymbolStart = "32">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

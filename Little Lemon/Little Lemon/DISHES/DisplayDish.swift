@@ -2,7 +2,7 @@
 //  DisplayDish.swift
 //  Little Lemon
 //
-//  By: S.M
+//  By: S.Mayer
 //
 
 import SwiftUI
@@ -19,27 +19,33 @@ struct DisplayDish: View {
             
             VStack (alignment: .leading) {
                 Text(dish.name ?? "")
-                //Spacer()
+                    .fontWeight(.medium)
                 Text(dish.desc ?? "")
+                    .foregroundColor(Color.gray)
                 Text(dish.price ?? "")
                     .font(.callout)
                     .monospaced()
+                    .foregroundColor(Color.llGreen)
             }
             
-            AsyncImage(url: URL(string: dish.image!)) { image in
-                image
-                    .resizable()
-                    .scaledToFill()
-            } placeholder: {
-                ProgressView()
+            Spacer()
+             
+            // Currently receiving black image for the fish and dessert dishes from the URL
+            AsyncImage(url: URL(string: dish.image!)) { phase in
+                if let image = phase.image {
+                    image // Displays the loaded image.
+                        .resizable()
+                        .scaledToFill()
+                } else if phase.error != nil {
+                    //Color.gray
+                } else {
+                    ProgressView() // placeholder
+                }
             }
-               //.resizable()
-               .frame(width:50, height:50, alignment:.leading)
-               //.aspectRatio(1.0)
-               //.contentMode: .fit
-               //.clipShape(Circle())
+            .frame(width:80, height:80, alignment:.leading)
+            .padding(.trailing, 20)  // show arrow indicator
+            
         }
-        //EmptyView()
-        .contentShape(Rectangle()) // keep this code
+        .contentShape(Rectangle()) 
     }
 }

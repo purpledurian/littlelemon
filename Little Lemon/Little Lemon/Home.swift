@@ -1,7 +1,7 @@
 //
 //  Home.swift
 //  LittleLemonCapstone
-//  By: S.M
+//  By: S.Mayer
 
 
 import SwiftUI

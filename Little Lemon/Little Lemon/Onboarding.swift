@@ -1,7 +1,7 @@
 //
 //  Onboarding.swift
 //  LittleLemonCapstone
-//  By: S.M
+//  By: S.Mayer
 
 
 import SwiftUI
@@ -22,49 +22,90 @@ struct Onboarding: View {
     
     var body: some View {
         
+        ZStack {
+            Image("logo")
+                .resizable()
+                .frame(width:200, height:40, alignment:.leading)
+                .aspectRatio(1.0, contentMode: .fit)
+                .padding(.bottom, 6)
+            
+            if (isLoggedIn) {
+                HStack {
+                    Spacer()
+                    Image("profile-image-placeholder")
+                        .resizable()
+                        .frame(width:40, height:40, alignment:.leading)
+                        .aspectRatio(1.0, contentMode: .fit)
+                        .clipShape(Circle())
+                        .padding(.trailing, 20)
+                        .padding(.bottom, 6)
+                }
+            }
+        }  // ZStack
+        
         NavigationView {
             
             VStack(alignment: .leading)  {
                 
                 NavigationLink(destination: Home(),isActive: $isLoggedIn) {
-                        // empty view here since nav is
-                        // is activated by button setting
-                        // isLoggedIn to true
-                        EmptyView()
+                    // empty view here since nav is
+                    // is activated by button setting
+                    // isLoggedIn to true
+                    EmptyView()
                 }
                 
-               
-                    Text("First name *")
-                        .font(.subheadline)
+                ScrollView {
+                    VStack() {
+                        Hero()
+                    }
                     
-                    TextField("First Name",
-                              text: $firstName)
-               
-                
-               
-                    Text("Last name *")
-                        .font(.subheadline)
+                    VStack(alignment: .leading) {
+                        Text("First name *")
+                            .font(.body)
+                            .padding([.leading, .top], 20)
+                            .foregroundColor(Color.gray)
+                            .fontWeight(.bold)
+                        
+                        TextField("First Name",
+                                  text: $firstName)
+                        .padding([.leading, .trailing], 20)
+                        .textFieldStyle(.roundedBorder)
+                        
+                        Text("Last name *")
+                            .font(.body)
+                            .padding([.leading, .top], 20)
+                            .foregroundColor(Color.gray)
+                            .fontWeight(.bold)
+                        
+                        TextField("Last Name",
+                                  text: $lastName
+                        )
+                        .padding([.leading, .trailing,], 20)
+                        .textFieldStyle(.roundedBorder)
+                        
+                        Text("Email *")
+                            .font(.body)
+                            .padding([.leading, .top], 20)
+                            .foregroundColor(Color.gray)
+                            .fontWeight(.bold)
+                        
+                        TextField("Email",
+                                  text: $email
+                        )
+                           .padding([.leading, .trailing,], 20)
+                           .textFieldStyle(.roundedBorder)
+                           .keyboardType(.emailAddress)
+                           .textContentType(.emailAddress)
+                           .disableAutocorrection(true)
+                           .autocapitalization(.none)
+                    }
                     
-                    TextField("Last Name",
-                              text: $lastName
-                    )
-              
+                }
+                // Scrollview
                 
-                
-                    Text("Email *")
-                        .font(.subheadline)
-                    
-                    TextField("Email",
-                              text: $email
-                    )
-                    .keyboardType(.emailAddress)
-                    .textContentType(.emailAddress)
-                    .disableAutocorrection(true)
-                    .autocapitalization(.none)
-              
+                Spacer()
                 
                 Button(action: {
-                    
                     
                     if (firstName.isEmpty || lastName.isEmpty || email.isEmpty) {
                         showErrorMessage = true
@@ -88,8 +129,10 @@ struct Onboarding: View {
                         .font(.title2)
                         .foregroundColor(.white)
                         .padding()
-                        .background(.blue)
+                        .background(Color.llGreen)
                         .cornerRadius(8)
+                        .padding([.leading, .trailing], 10)
+                        .padding(.bottom, 60 )
                 })
                 
                 .alert(errorMessage,
@@ -97,15 +140,25 @@ struct Onboarding: View {
                 }
                 
                 
-            } // VStack
-            .background(Color.green)
+            } // outer VStack
+            .background(Color.white)
+            
             
         } // NavigationView
-        .padding()
         .onAppear() {
             if (UserDefaults.standard.bool(forKey: kIsLoggedIn)) {
                 isLoggedIn = true
             }
+            else {
+                isLoggedIn = false
+            }
+            
+            // unfortunately onAppear not getting called when navLink pops back here.
+            // Need to find another place to load these values to empty fields after a log out
+            //firstName = UserDefaults.standard.string(forKey: kFirstName) ?? ""
+            //lastName = UserDefaults.standard.string(forKey: kLastName) ?? ""
+            //email = UserDefaults.standard.string(forKey: kEmail) ?? ""
+           
         }
     }
 }

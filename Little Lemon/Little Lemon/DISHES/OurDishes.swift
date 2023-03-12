@@ -2,7 +2,7 @@
 //  OurDishes.swift
 //  Little Lemon
 //
-// By: S.M
+// By: S.Mayer
 //
 
 import SwiftUI
@@ -15,66 +15,171 @@ struct OurDishes: View {
     @State private var showAlert = false
     @State var searchText = ""
     
+    @State private var category = ""
+    @State private var filterSearch = true
     
     var body: some View {
         VStack {
-            //LittleLemonLogo()
-                //.padding(.bottom, 10)
-                //.padding(.top, 50)
-            
-            Text ("Tap to order")
-                .foregroundColor(.black)
-                .padding([.leading, .trailing], 40)
-                .padding([.top, .bottom], 8)
-                .background(Color("yellow"))
-                .cornerRadius(20)
-            
-            
-            NavigationView {
-                FetchedObjects(
-                    predicate:buildPredicate(),
+            Spacer()
+            VStack() {
+                HStack {
+                    Text("ORDER FOR DELIVERY")
+                        .font(.title3)
+                        .fontWeight(.medium)
+                    
+                    Image("deliveryVan")
+                       .resizable()
+                       .frame(width:40, height:20, alignment:.leading)
+                       .aspectRatio(1.0, contentMode: .fit)
+                    Spacer()
+                }
+                 
+                ScrollView(.horizontal) {
+                    HStack {
+                       
+                            Button(action: {
+                                category = "starters"
+                                filterSearch = false
+                            },
+                                   label: {
+                                Text("Starters")
+                                    .font(.body)
+                                    .foregroundColor(.llGreen)
+                                    .padding(6)
+                                    .background(Color.llGray)
+                                    .cornerRadius(8)
+                                    .fontWeight(.bold)
+                                
+                            })
+                            
+                            Button(action: {
+                                category = "mains"
+                                filterSearch = false
+                                
+                            },
+                                   label: {
+                                Text("Mains")
+                                    .font(.body)
+                                    .foregroundColor(.llGreen)
+                                    .padding(6)
+                                    .background(Color.llGray)
+                                    .cornerRadius(8)
+                                    .fontWeight(.bold)
+                                
+                            })
+                            
+                            Button(action: {
+                                category = "desserts"
+                                filterSearch = false
+                            },
+                                   label: {
+                                Text("Desserts")
+                                    .font(.body)
+                                    .foregroundColor(.llGreen)
+                                    .padding(6)
+                                    .background(Color.llGray)
+                                    .cornerRadius(8)
+                                    .fontWeight(.bold)
+                                
+                            })
+                            
+                            Button(action: {
+                                category = "drinks"
+                                filterSearch = false
+                            },
+                                   label: {
+                                Text("Drinks")
+                                    .font(.body)
+                                    .foregroundColor(.llGreen)
+                                    .padding(6)
+                                    .background(Color.llGray)
+                                    .cornerRadius(12)
+                                    .fontWeight(.bold)
+                                
+                            })
+                        
+                           Button(action: {
+                               filterSearch = true
+                           },
+                                label: {
+                              Text("All")
+                                .font(.body)
+                                .foregroundColor(.llGreen)
+                                .padding(6)
+                                .background(Color.llGray)
+                                .cornerRadius(12)
+                                .fontWeight(.bold)
+                            
+                         })
+     
+                    }// HStack
+                } // Scrollview
+                
+                Divider()
+                    .padding(.top, 10)
+                
+            } // VStack
+            .frame(minWidth: 0, maxWidth: .infinity)
+            .padding()
+            .background(Color.white)
+            .padding(.bottom, -14)
+           
+            FetchedObjects(
+                    predicate:buildPredicate(filterSearch),
                     sortDescriptors: buildSortDescriptors()) {
                         (dishes: [Dish]) in
                         List {
-                            // Code for the list enumeration here
                             ForEach(dishes, id:\.self) { dish in
-                                DisplayDish(dish)
+                                NavigationLink(destination: ItemDetail(dish)) {
+                                    DisplayDish(dish)
+                                }
                             }
                         }
-                        .onTapGesture {
-                            showAlert.toggle()
-                        }
-                        // add the search bar modifier here
+                        .padding(.trailing, -20)
+                        .padding(.leading, -20)
+                        .padding(.top, -20)
+                        .background(Color.white)
+                        
+                        // search bar modifier
                         .searchable(text: $searchText,
-                                    prompt: "search...")
+                                prompt: "")
+                        .cornerRadius(8)
+                     
                     }
-            }
             
-            // SwiftUI has this space between the title and the list
-            // that is amost impossible to remove without incurring
-            // into complex steps that run out of the scope of this
-            // course, so, this is a hack, to bring the list up
-            // try to comment this line and see what happens.
-            .padding(.top, -10)//
-            
-            .alert("Order placed, thanks!",
-                   isPresented: $showAlert) {
-                Button("OK", role: .cancel) { }
-            }
-            
+            } // VStack
+            .background(Color.llGreen)
+          
             // makes the list background invisible, default is gray
-                   .scrollContentBackground(.hidden)
+            .scrollContentBackground(.hidden)
             
             // runs when the view appears
-                   .task {
-                           await dishesModel.reload(viewContext)
-                   }
+            .task {
+                await dishesModel.getMenuData(viewContext)
+            }
+            .onAppear() {
+                UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).backgroundColor = .white
+                UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).tintColor = .black
+            }
             
-        }
+       
     }
     
-    func buildPredicate() -> NSPredicate {
-        return searchText == "" ? NSPredicate(value: true) : NSPredicate(format: "name CONTAINS[cd] %@", searchText)
+    func buildPredicate(_ filterSearch:Bool) -> NSPredicate {
+        
+        // priortize searchbar, regardless of category button press
+        if (searchText != "")
+        {
+           return NSPredicate(format: "name CONTAINS[cd] %@", searchText)
+        }
+        switch filterSearch {
+           case true:
+                return NSPredicate(value: true)
+                //return searchText == "" ? NSPredicate(value: true) : NSPredicate(format: "name CONTAINS[cd] %@", searchText)
+            
+           case false:
+               return NSPredicate(format: "category CONTAINS[cd] %@", category)
+        }
     }
     
     func buildSortDescriptors () -> [NSSortDescriptor] {

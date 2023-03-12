@@ -2,12 +2,11 @@
 //  MenuItem.swift
 //  Little Lemon
 //
-//  By: S.M
+//  By: S.Mayer
 //
 
 
 import Foundation
-
 
 struct MenuItem: Codable, Identifiable {
     let id = UUID()
