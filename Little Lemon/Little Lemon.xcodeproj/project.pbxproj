@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3DB372CC29BE61B400D8C64E /* ItemDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB372CB29BE61B300D8C64E /* ItemDetail.swift */; };
+		3DB372CE29BE62A000D8C64E /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB372CD29BE62A000D8C64E /* Hero.swift */; };
 		3DE1BB4329B151C6004D4D84 /* Little_LemonApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE1BB4229B151C6004D4D84 /* Little_LemonApp.swift */; };
 		3DE1BB4729B151C7004D4D84 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DE1BB4629B151C7004D4D84 /* Assets.xcassets */; };
 		3DE1BB4A29B151C7004D4D84 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DE1BB4929B151C7004D4D84 /* Preview Assets.xcassets */; };
@@ -30,6 +32,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3DB372CB29BE61B300D8C64E /* ItemDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetail.swift; sourceTree = "<group>"; };
+		3DB372CD29BE62A000D8C64E /* Hero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
 		3DE1BB3F29B151C6004D4D84 /* Little Lemon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Little Lemon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DE1BB4229B151C6004D4D84 /* Little_LemonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Little_LemonApp.swift; sourceTree = "<group>"; };
 		3DE1BB4629B151C7004D4D84 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -67,7 +71,6 @@
 		3DE1BB3629B151C6004D4D84 = {
 			isa = PBXGroup;
 			children = (
-				3DED2E4D29B67C0B00EA0E81 /* ExampleDatabase.xcdatamodeld */,
 				3DE1BB4129B151C6004D4D84 /* Little Lemon */,
 				3DE1BB4029B151C6004D4D84 /* Products */,
 			);
@@ -84,6 +87,8 @@
 		3DE1BB4129B151C6004D4D84 /* Little Lemon */ = {
 			isa = PBXGroup;
 			children = (
+				3DED2E4D29B67C0B00EA0E81 /* ExampleDatabase.xcdatamodeld */,
+				3DB372CD29BE62A000D8C64E /* Hero.swift */,
 				3DED2E7229B6B8F800EA0E81 /* CORE DATA */,
 				3DE1BB4229B151C6004D4D84 /* Little_LemonApp.swift */,
 				3DED2E7729B6BA1400EA0E81 /* DISHES */,
@@ -125,6 +130,7 @@
 				3DED2E7A29B6BABA00EA0E81 /* MenuList.swift */,
 				3DED2E7C29B6BACF00EA0E81 /* Dish+Extension.swift */,
 				3DED2E7E29B6BAE100EA0E81 /* DishesModel.swift */,
+				3DB372CB29BE61B300D8C64E /* ItemDetail.swift */,
 				3DED2E8029B6BAF200EA0E81 /* DisplayDish.swift */,
 				3DED2E8229B6BB0000EA0E81 /* OurDishes.swift */,
 			);
@@ -209,12 +215,14 @@
 				3DED2E4F29B67C0B00EA0E81 /* ExampleDatabase.xcdatamodeld in Sources */,
 				3DED2E4629B525C100EA0E81 /* Menu.swift in Sources */,
 				3DED2E7029B6B8EC00EA0E81 /* Customer+CoreDataClass.swift in Sources */,
+				3DB372CC29BE61B400D8C64E /* ItemDetail.swift in Sources */,
 				3DED2E7B29B6BABA00EA0E81 /* MenuList.swift in Sources */,
 				3DED2E7929B6BA3D00EA0E81 /* MenuItem.swift in Sources */,
 				3DED2E6F29B6B8EC00EA0E81 /* Dish+CoreDataProperties.swift in Sources */,
 				3DED2E4829B5292000EA0E81 /* Home.swift in Sources */,
 				3DED2E7629B6B98A00EA0E81 /* FetchedObjects.swift in Sources */,
 				3DED2E4C29B5296400EA0E81 /* UserProfile.swift in Sources */,
+				3DB372CE29BE62A000D8C64E /* Hero.swift in Sources */,
 				3DED2E7F29B6BAE100EA0E81 /* DishesModel.swift in Sources */,
 				3DED2E4A29B5295500EA0E81 /* Onboarding.swift in Sources */,
 				3DED2E8329B6BB0000EA0E81 /* OurDishes.swift in Sources */,

@@ -2,11 +2,10 @@
 //  Dish+Extension.swift
 //  Little Lemon
 //
-//  By: S.M
+//  By: S.Mayer
 //
 
 import Foundation
-
 import CoreData
 
 
@@ -28,6 +27,8 @@ extension Dish {
             }
             
         }
+        
+        try? context.save()
     
     }
     

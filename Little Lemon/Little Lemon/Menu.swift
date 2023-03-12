@@ -1,27 +1,31 @@
 //
 //  Menu.swift
 //  LittleLemonCapstone
-//  By: S.M
+//  By: S.Mayer
 
 
 import SwiftUI
 
 struct Menu: View {
+    
+   @State var searchText1 = ""
     var body: some View {
+        
         VStack(alignment: .leading) {
-            Text("Little Lemon")
-            Text("Chicago")
-            Text("We are a family restaurant")
-            OurDishes()
- 
+                
+            Group {
+                Hero()
+            } 
+                
+            NavigationView {
+                OurDishes()
+            }
+            .padding(.top, -6)
+            .onAppear() {
+                UISearchBar.appearance().barTintColor = UIColor.white
+            }
+                
         }
-        .padding()
-        .background(Color.yellow)
-    }
-}
-
-struct Menu_Previews: PreviewProvider {
-    static var previews: some View {
-        Menu()
+        .background(Color.llGreen)
     }
 }
