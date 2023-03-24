@@ -12,9 +12,14 @@ let kEmail = "emailKey"
 let kIsLoggedIn = "kIsLoggedIn"
 
 struct Onboarding: View {
-    @State private var firstName = ""
-    @State private var lastName = ""
-    @State private var email = ""
+    //@State private var firstName = ""
+    //@State private var lastName = ""
+    //@State private var email = ""
+    // change property wrapper to update view upon value change
+    @AppStorage(kFirstName) var firstName = ""
+    @AppStorage(kLastName) var lastName = ""
+    @AppStorage(kEmail) var email = ""
+   
     @State private var errorMessage:String = "First name, Last name, and email are required fields"
     @State private var showErrorMessage: Bool = false
     
@@ -47,6 +52,7 @@ struct Onboarding: View {
             
             VStack(alignment: .leading)  {
                 
+                // Replacing this with NavigationStack and NavigationDestination(isPresented) doesn't consistently work for some reason, so I will keep this old way of navigation for now. I've seen a value of true for isPresented but the code just steps over that line in the Debugger instead of presenting.
                 NavigationLink(destination: Home(),isActive: $isLoggedIn) {
                     // empty view here since nav is
                     // is activated by button setting
@@ -60,6 +66,8 @@ struct Onboarding: View {
                     }
                     
                     VStack(alignment: .leading) {
+                        
+                        // First name entry
                         Text("First name *")
                             .font(.body)
                             .padding([.leading, .top], 20)
@@ -71,6 +79,7 @@ struct Onboarding: View {
                         .padding([.leading, .trailing], 20)
                         .textFieldStyle(.roundedBorder)
                         
+                        // Last name entry
                         Text("Last name *")
                             .font(.body)
                             .padding([.leading, .top], 20)
@@ -83,6 +92,7 @@ struct Onboarding: View {
                         .padding([.leading, .trailing,], 20)
                         .textFieldStyle(.roundedBorder)
                         
+                        // email entry
                         Text("Email *")
                             .font(.body)
                             .padding([.leading, .top], 20)
@@ -105,24 +115,8 @@ struct Onboarding: View {
                 
                 Spacer()
                 
-                Button(action: {
-                    
-                    if (firstName.isEmpty || lastName.isEmpty || email.isEmpty) {
-                        showErrorMessage = true
-                    }
-                    else if (!isValid(email: email)) {
-                        errorMessage = "Email address is invalid"
-                        showErrorMessage = true
-                    }
-                    else {
-                        isLoggedIn = true
-                        UserDefaults.standard.set(firstName, forKey: kFirstName)
-                        UserDefaults.standard.set(lastName, forKey: kLastName)
-                        UserDefaults.standard.set(email, forKey: kEmail)
-                        UserDefaults.standard.set(isLoggedIn, forKey: kIsLoggedIn)
-                    }
-                    
-                }, // button
+                Button(action:
+                    verifyInputFields,
                        label: {
                     Text("Register")
                         .frame(minWidth: 0, maxWidth: .infinity)
@@ -153,15 +147,36 @@ struct Onboarding: View {
                 isLoggedIn = false
             }
             
-            // unfortunately onAppear not getting called when navLink pops back here.
-            // Need to find another place to load these values to empty fields after a log out
+            // onAppear doesn't get called when navLink pops back here, so we cannot clear firstName, etc
+            // after a log out. By using AppStorage instead of State
+            // property wrapper, the view is updated when the values change.
+            
             //firstName = UserDefaults.standard.string(forKey: kFirstName) ?? ""
             //lastName = UserDefaults.standard.string(forKey: kLastName) ?? ""
             //email = UserDefaults.standard.string(forKey: kEmail) ?? ""
            
         }
     }
+    
+    func verifyInputFields()
+    {
+        if (firstName.isEmpty || lastName.isEmpty || email.isEmpty) {
+            showErrorMessage = true
+        }
+        else if (!isValid(email: email)) {
+            errorMessage = "Email address is invalid"
+            showErrorMessage = true
+        }
+        else {
+            isLoggedIn = true
+            UserDefaults.standard.set(firstName, forKey: kFirstName)
+            UserDefaults.standard.set(lastName, forKey: kLastName)
+            UserDefaults.standard.set(email, forKey: kEmail)
+            UserDefaults.standard.set(isLoggedIn, forKey: kIsLoggedIn)
+        }
+    }
 }
+
 
 func isValid(email:String) -> Bool {
     guard !email.isEmpty else { return false }
